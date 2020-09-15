@@ -14,4 +14,4 @@ namespace EFCore.Interfaces
             void Remover(Guid id);
         }
     }
-}
+

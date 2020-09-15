@@ -1,9 +1,11 @@
 ﻿using EFCore.Domains;
 using EFCore.Interfaces;
 using EFCore.Repositories;
+using EFCore.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 namespace EFCore.Controllers
 {
@@ -35,12 +37,19 @@ namespace EFCore.Controllers
                     return NoContent();
 
                 //Caso exista retorna um Ok e os produtos
-                return Ok(produtos);
+                return Ok(new
+                {
+                    totalCount = produtos.Count,
+                    data = produtos
+                });
             }
             catch (Exception ex)
             {
-                //No caso de ocorrer algum erro retorna BadRequest e a mensagem do erro
-                return BadRequest(ex.Message);
+                return BadRequest(new
+                {
+                    statusCode = 400,
+                    error = "Ocorreu um erro no endpoint Get/produtos, envie um e-mail para email@email.com informando"
+                });
             }
         }
 
@@ -69,10 +78,18 @@ namespace EFCore.Controllers
 
         // POST
         [HttpPost]
-        public IActionResult Post(Produto produto)
+        public IActionResult Post([FromForm]Produto produto)
         {
             try
             {
+                //TODO: Adicionar if no PedidoController que vai ser criado dentro do try do POST
+                if (produto.Imagem != null)
+                {
+                    var urlImagem = Upload.Local(produto.Imagem);
+
+                    produto.UrlImagem = urlImagem;
+
+                }
                 //Adiciona um produto
                 _produtoRepository.Adicionar(produto);
 
@@ -93,13 +110,7 @@ namespace EFCore.Controllers
         {
             try
             {
-                var produtoTemp = _produtoRepository.BuscarPorId(id);
-
-                if (produtoTemp == null)
-                    return NotFound();
-
                 //Edita o produto
-                produto.Id = id;
                 _produtoRepository.Editar(produto);
 
                 //Caso ok com os dados do produto
@@ -119,11 +130,19 @@ namespace EFCore.Controllers
         {
             try
             {
+                //Busca o produto pelo Id
+                var produto = _produtoRepository.BuscarPorId(id);
+
+                //Verifica se produto existe
+                //Caso não exista retorna NotFound
+                if (produto == null)
+                    return NotFound();
+
+                //Caso exista remove o produto
                 _produtoRepository.Remover(id);
 
                 //Caso ok com os dados do produto
                 return Ok(id);
-
             }
             catch (Exception ex)
             {

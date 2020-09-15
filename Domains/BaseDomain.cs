@@ -13,12 +13,17 @@ namespace EFCore.Domains
         //Guid - código único de incrementação, segurança do ID, é interessante utilizar na Primary Key
         //Domains - "Classes" das coisas
         [Key]
-        public Guid Id { get; set; }
+        public Guid Id { get; private set; }
 
         //dando um new guid gerado aleatoriamente
         public BaseDomain()
         {
             Id = Guid.NewGuid();
+        }
+
+        public void setId(Guid id)
+        {
+            this.Id = id;
         }
 
     }
