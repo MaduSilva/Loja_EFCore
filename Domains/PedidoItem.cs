@@ -1,16 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EFCore.Domains
 {
-    public class PedidoItem
+    /// <summary>
+    /// Classe PedidoItem que relaciona a classe Pedido com a Produto 
+    /// </summary>
+    public class PedidoItem : BaseDomain
+
+    //O relacionamento entre classes ocorre utilizando o Data Annotations Schema
+    //Guid - código único de incrementação, segurança do ID, é interessante utilizar na Primary Key
+    //Domains - "Classes" das coisas
     {
-        [Key]
-        public Guid Id { get; set; }
+        
 
         public Guid IdPedido { get; set; }
         [ForeignKey("IdPedido")]
@@ -21,6 +24,11 @@ namespace EFCore.Domains
         [ForeignKey("IdProduto")]
 
         public Produto Produto { get; set; }
+
+        [Required]
+        public int Quantidade { get; set; }
+
+     
 
     }
 }

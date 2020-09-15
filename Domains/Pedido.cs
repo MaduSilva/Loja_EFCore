@@ -1,24 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace EFCore.Domains
 {
-    public class Pedido
+    /// <summary>
+    /// Classe Pedido
+    /// </summary>
+    public class Pedido : BaseDomain
+    //Guid - código único de incrementação, segurança do ID, é interessante utilizar na Primary Key
+    //Domains - "Classes" das coisas
     {
-        [Key]
-        public Guid Id { get; set; }
+       
 
         public string status { get; set; }
 
         public DateTime OrderDate { get; set; }
 
-        public Pedido()
-        {
-            Id = Guid.NewGuid();
-        }
+        
+       
 
     }
 }
