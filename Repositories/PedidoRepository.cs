@@ -22,30 +22,30 @@ namespace EFCore.Repositories
         {
             try
             {
-                //Criação do pobjeto do tipo pedido passando os valores
+                //Criando o objeto pedido com seus respectivos valores
                 Pedido pedido = new Pedido
                 {
                     Status = "Pedido Efetuado",
                     OrderDate = DateTime.Now,
-                    //PedidosItens = new List<PedidoItem>()
+                    
                 };
 
 
-                //Percorre a lista de pedidos itens e adciona a lista de pedidosItens
+                //Percorre a lista de pedidos itens (foreach) e adiciona a lista de pedidosItens
                 foreach (var item in pedidosItens)
                 {
-                    //Adciona um pedidoitem a lista
+                    //Adiciona um pedidoitem a lista com seus respectivos valores
                     pedido.PedidosItens.Add(new PedidoItem
                     {
-                        IdPedido = pedido.Id, //Id do objeto pedido criado acima
+                        IdPedido = pedido.Id, //Id do objeto pedido que foi criado
                         IdProduto = item.IdProduto,
                         Quantidade = item.Quantidade
                     });
                 }
 
-                //Adiciono o pedido ao meu contexto
+                //Adicionando o pedido ao contexto
                 _ctx.Pedidos.Add(pedido);
-                //Salva as alterações do contexto no banco de dados
+                //Salva as alterações do contexto no db
                 _ctx.SaveChanges();
 
                 return pedido;

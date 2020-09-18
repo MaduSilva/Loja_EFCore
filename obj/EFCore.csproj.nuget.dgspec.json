@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\API\\EF\\EFCore\\EFCore.csproj": {}
+    "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\Exercícios\\API\\EF\\EFCore\\EFCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\API\\EF\\EFCore\\EFCore.csproj": {
+    "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\Exercícios\\API\\EF\\EFCore\\EFCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\API\\EF\\EFCore\\EFCore.csproj",
+        "projectUniqueName": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\Exercícios\\API\\EF\\EFCore\\EFCore.csproj",
         "projectName": "EFCore",
-        "projectPath": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\API\\EF\\EFCore\\EFCore.csproj",
+        "projectPath": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\Exercícios\\API\\EF\\EFCore\\EFCore.csproj",
         "packagesPath": "C:\\Users\\fic\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\API\\EF\\EFCore\\obj\\",
+        "outputPath": "C:\\Users\\fic\\Downloads\\dev2maria (favor n apagar)\\Exercícios\\API\\EF\\EFCore\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\fic\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -38,6 +38,10 @@
       "frameworks": {
         "netcoreapp3.0": {
           "dependencies": {
+            "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
+              "target": "Package",
+              "version": "[3.0.3, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[3.1.8, )"
@@ -65,6 +69,10 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.1.4, )"
+            },
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[5.5.0, )"
             }
           },
           "imports": [
@@ -77,6 +85,12 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.NETCore.App.Host.win-x86",
+              "version": "[3.0.0, 3.0.0]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"

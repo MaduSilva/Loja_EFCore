@@ -4,8 +4,6 @@ using EFCore.Repositories;
 using EFCore.Utils;
 using Microsoft.AspNetCore.Mvc;
 using System;
-using System.Collections.Generic;
-using System.IO;
 
 namespace EFCore.Controllers
 {
@@ -39,6 +37,7 @@ namespace EFCore.Controllers
                 //Caso exista retorna um Ok e os produtos
                 return Ok(new
                 {
+                    //count contagem 
                     totalCount = produtos.Count,
                     data = produtos
                 });
@@ -48,7 +47,7 @@ namespace EFCore.Controllers
                 return BadRequest(new
                 {
                     statusCode = 400,
-                    error = "Ocorreu um erro no endpoint Get/produtos, envie um e-mail para email@email.com informando"
+                    error = "Ocorreu um erro no endpoint Get/produtos, envie um e-mail para email@email.com para reportar"
                 });
             }
         }

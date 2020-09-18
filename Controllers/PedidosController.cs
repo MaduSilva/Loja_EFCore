@@ -22,9 +22,7 @@ namespace EFCore.Controllers
         {
             try
             {
-
-
-                //Adiciona um pedido
+                //Adiciona um novo pedido
                 Pedido pedido = _pedidoRepository.Adicionar(pedidosItens);
                 return Ok(pedido);
             }

@@ -16,7 +16,7 @@ namespace EFCore.Domains
 
         public DateTime OrderDate { get; set; }
 
-        //Relacionamento com a tabela PedidoItem 1,N
+        //Relacionamento com a tabela PedidoItem 1 pra N
         public List<PedidoItem> PedidosItens { get; set; }
 
         public Pedido()

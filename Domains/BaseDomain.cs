@@ -13,6 +13,7 @@ namespace EFCore.Domains
         //Guid - código único de incrementação, segurança do ID, é interessante utilizar na Primary Key
         //Domains - "Classes" das coisas
         [Key]
+        //segurança private, n posso setar
         public Guid Id { get; private set; }
 
         //dando um new guid gerado aleatoriamente
